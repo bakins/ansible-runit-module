@@ -64,7 +64,7 @@ def main():
     SV = module.get_bin_path('sv', True)
 
     def status():
-        """Return the status of the process in runit, or the empty string if not present."""
+        """Return the status of the process in runit, or 'fail' if not present."""
         rc, out, err = module.run_command('%s status %s' % (SV, name), check_rc=True)
         for line in out.split('\n'):
             # Sample output lines:
@@ -78,6 +78,9 @@ def main():
         """Runs a runit command, and returns the new status."""
         module.run_command('%s %s %s' % (SV, command, name), check_rc=True)
         return status()
+
+    if status() != 'fail':
+        module.fail_json(msg='%s process not presently configured with runit' % name, name=name, state=state)
 
     running = 'run' == status()
 
