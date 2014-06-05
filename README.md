@@ -10,6 +10,6 @@ So, get into ansible - probably via a role - and use.
 
 Status
 =======
-I tested it a few times and it worked for me.  This was a way to get me more into ansible and also to practive my rusty python.
+I tested it a few times and it worked for me.  This was a way to get me more into ansible and also to practice my rusty python.
 
 
