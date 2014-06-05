@@ -79,7 +79,7 @@ def main():
         module.run_command('%s %s %s' % (SV, command, name), check_rc=True)
         return status()
 
-    if status() != 'fail':
+    if status() == 'fail':
         module.fail_json(msg='%s process not presently configured with runit' % name, name=name, state=state)
 
     running = 'run' == status()
